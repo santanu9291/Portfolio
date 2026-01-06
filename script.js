@@ -1,62 +1,88 @@
-// Basic interactive behaviors for the portfolio
-(function(){
-// Typewriter effect for the title
-const typeElem = document.querySelector('.typewriter');
-if(typeElem){
-const txt = typeElem.dataset.text || typeElem.textContent;
-let i=0; typeElem.textContent='';
-const step = ()=>{
-if(i<txt.length){ typeElem.textContent += txt.charAt(i++); setTimeout(step,24); } else { /* loop not needed */ }
-};
-step();
+// Fade and slide sections in on scroll
+function revealOnScroll() {
+  const sections = document.querySelectorAll('.section');
+  let delay = 0;
+  sections.forEach(section => {
+    const top = section.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100 && !section.classList.contains('visible')) {
+      setTimeout(() => section.classList.add('visible'), delay);
+      delay += 200;
+    }
+  });
 }
 
-
-// Smooth scroll for internal anchors
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-a.addEventListener('click',e=>{ const id=a.getAttribute('href'); if(id==='#') return; const el=document.querySelector(id); if(!el) return; e.preventDefault(); el.scrollIntoView({behavior:'smooth',block:'start'}); });
+$(document).ready(function(){
+  // console.log("fsdfsd");
+  // alert("JS working ✅");
+  $('.projects-slider').slick({
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    autoplaySpeed: 2500,
+    arrows: true,
+    dots: true,
+    centerMode: true,
+    centerPadding: '0',
+    responsive: [
+      {
+        breakpoint: 900,
+        settings: { slidesToShow: 2 }
+      },
+      {
+        breakpoint: 600,
+        settings: { slidesToShow: 1 }
+      }
+    ]
+  });
 });
 
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
 
-// Skill bars animation on scroll
-const bars = document.querySelectorAll('.bar-fill');
-const animBars = ()=>{
-bars.forEach(b=>{
-const val = parseInt(b.dataset.fill||'0',10);
-const rect = b.getBoundingClientRect();
-if(rect.top < window.innerHeight - 80){ b.style.width = val + '%'; }
+// Smooth scroll for navbar links
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if(href.startsWith('#')) {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if(target){
+        window.scrollTo({
+          top: target.offsetTop - 30,
+          behavior: 'smooth'
+        });
+      }
+    }
+  });
 });
-};
-window.addEventListener('scroll', animBars); animBars();
 
+// Contact form handler
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', (e) => {
+    // If using FormSubmit, let it submit normally
+    // Just show a pending message
+    const msg = document.getElementById('msg');
+    msg.textContent = 'Sending your message...';
+    msg.style.color = '#58a6ff';
+    
+    // Form will submit to FormSubmit and redirect
+    // No need to prevent default or reset
+  });
+}
 
-// Modal logic for project preview
-const modal = document.getElementById('projModal');
-const modalTitle = document.getElementById('modalTitle');
-const modalDesc = document.getElementById('modalDesc');
-const modalTags = document.getElementById('modalTags');
-const modalStore = document.getElementById('modalStore');
-document.querySelectorAll('.open-modal').forEach(btn=>{
-btn.addEventListener('click', function(e){
-const card = this.closest('.proj-card');
-const title = card.dataset.title || card.querySelector('h3')?.textContent || 'Project';
-const desc = card.querySelector('.muted')?.textContent || '';
-const tags = Array.from(card.querySelectorAll('.proj-tags span')).map(s=>s.textContent);
-modalTitle.textContent = title; modalDesc.textContent = desc; modalTags.innerHTML = tags.map(t=>`<span class="tag">${t}</span>`).join(' ');
-modalStore.href = '#';
-modal.setAttribute('aria-hidden','false');
+// Download CV button with pulse effect
+const cvBtn = document.getElementById('cvBtn');
+cvBtn.addEventListener('click', () => {
+  if (cvBtn.classList.contains('btn-loading')) return;
+  cvBtn.classList.add('btn-loading');
+  setTimeout(() => {
+    cvBtn.classList.remove('btn-loading');
+    const link = document.createElement('a');
+    link.href = 'cv.pdf';
+    link.download = 'Your_Name_CV.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }, 1000);
 });
-});
-document.querySelectorAll('.modal-close').forEach(b=>b.addEventListener('click',()=>modal.setAttribute('aria-hidden','true')));
-modal.addEventListener('click', e=>{ if(e.target===modal) modal.setAttribute('aria-hidden','true'); });
 
-
-// Contact form simple handler (no backend)
-const form = document.getElementById('contactForm');
-form.addEventListener('submit', function(e){ e.preventDefault(); alert('Thanks! This demo form does not send messages. Replace with your backend integration.'); form.reset(); });
-
-
-// Small parallax effect
-const parallax = document.querySelector('.parallax-layer');
-window.addEventListener('mousemove', function(e){ if(!parallax) return; const x = (e.clientX - window.innerWidth/2)/40; const y = (e.clientY - window.innerHeight/2)/40; parallax.style.transform = `translate(${x}px, ${y}px)`; });
-})();

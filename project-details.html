@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project Details</title>
+
+
+  <!-- Slick slider stylesheet -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/> -->
+
+
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+      color: #c9d1d9;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* Navigation */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      margin: 20px 0 0 20px;
+      background: rgba(88, 166, 255, 0.1);
+      border: 1px solid #58a6ff;
+      border-radius: 8px;
+      color: #58a6ff;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 100;
+    }
+
+    .back-link:hover {
+      background: rgba(88, 166, 255, 0.2);
+      border-color: #4caf50;
+      color: #4caf50;
+    }
+
+    /* Banner slider styling */
+    .banner-slider {
+      max-width: 95%;
+      margin: 30px auto;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(88, 166, 255, 0.2);
+      position: relative;
+      aspect-ratio: 16 / 9;
+    }
+
+    .banner-slider::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom,
+          rgba(0, 0, 0, 0.2),
+          rgba(0, 0, 0, 0.4));
+      pointer-events: none;
+    }
+
+    .banner-slider img,
+    .banner-slide video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+      background-color: #111;
+    }
+
+    #prevBtn,
+    #nextBtn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: linear-gradient(135deg, #58a6ff, #4caf50);
+      color: #0d1117;
+      border: none;
+      padding: 16px 20px;
+      font-size: 24px;
+      border-radius: 12px;
+      cursor: pointer;
+      z-index: 999;
+      transition: all 0.3s ease;
+      font-weight: 700;
+    }
+
+    #prevBtn {
+      left: 20px;
+    }
+
+    #nextBtn {
+      right: 20px;
+    }
+
+    #prevBtn:hover,
+    #nextBtn:hover {
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 8px 24px rgba(88, 166, 255, 0.4);
+    }
+
+    /* Header */
+    .header-section {
+      text-align: center;
+      padding: 40px 20px 20px;
+    }
+
+    .animated-title-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 24px 40px;
+      background: linear-gradient(135deg, #161b22 0%, #21262d 100%);
+      border: 2px solid #58a6ff;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(88, 166, 255, 0.15);
+    }
+
+    .animated-title {
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: #58a6ff;
+      margin: 0;
+      animation: scalePulse 3s ease-in-out infinite;
+      text-shadow: 0 0 10px rgba(88, 166, 255, 0.4);
+    }
+
+    @keyframes scalePulse {
+      0%, 100% {
+        transform: scale(1);
+        color: #58a6ff;
+        text-shadow: 0 0 10px rgba(88, 166, 255, 0.4);
+      }
+      50% {
+        transform: scale(1.05);
+        color: #4caf50;
+        text-shadow: 0 0 15px rgba(76, 175, 80, 0.4);
+      }
+    }
+
+    /* Main content section */
+    .details-section {
+      padding: 40px 20px;
+      width: 100%;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Flex Layout */
+    .details-flex {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 40px;
+      margin-bottom: 40px;
+      align-items: start;
+    }
+
+    /* Stats Box */
+    .stats-box {
+      background: linear-gradient(135deg, #161b22 0%, #21262d 100%);
+      border: 1px solid #30363d;
+      border-radius: 16px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      position: sticky;
+      top: 20px;
+    }
+
+    .stats-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(88, 166, 255, 0.15);
+      border-color: #58a6ff;
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid #30363d;
+    }
+
+    .stat-item:last-child {
+      border-bottom: none;
+    }
+
+    .stat-icon {
+      font-size: 2rem;
+    }
+
+    .stat-item span:last-child {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #58a6ff;
+    }
+
+    /* Video Box */
+    .video-box {
+      background: #0f141a;
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      border: 1px solid #30363d;
+    }
+
+    .video-box iframe {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Interactive Sections */
+    .interactive-section {
+      background: linear-gradient(135deg, #161b22 0%, #21262d 100%);
+      border: 1px solid #30363d;
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 28px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .interactive-section:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(88, 166, 255, 0.15);
+      border-color: #58a6ff;
+    }
+
+    /* Description Section */
+    .description-section h2 {
+      font-size: 1.8rem;
+      color: #58a6ff;
+      margin-bottom: 18px;
+    }
+
+    .description-section p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #c9d1d9;
+    }
+
+    /* Features Section */
+    .features-section h3 {
+      font-size: 1.6rem;
+      color: #58a6ff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .features-section ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, padding-top 0.3s ease;
+    }
+
+    .accordion-open ul {
+      max-height: 600px;
+      padding-top: 20px;
+    }
+
+    .features-section li {
+      padding: 12px 0 12px 28px;
+      color: #c9d1d9;
+      font-size: 1rem;
+      line-height: 1.6;
+      position: relative;
+    }
+
+    .features-section li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #4caf50;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    .toggle-icon {
+      font-size: 1.4rem;
+      color: #4caf50;
+      transition: transform 0.4s ease;
+    }
+
+    .accordion-open .toggle-icon {
+      transform: rotate(90deg);
+    }
+
+    /* Gallery Section */
+    .gallery-section h2 {
+      font-size: 1.8rem;
+      color: #58a6ff;
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.4s ease;
+    }
+
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(88, 166, 255, 0) 0%, rgba(88, 166, 255, 0.1) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+
+    /* Play Store Button */
+    .playstore-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 32px;
+      background: linear-gradient(135deg, #58a6ff, #4caf50);
+      color: #0d1117;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(88, 166, 255, 0.3);
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      width: 100%;
+      text-decoration: none;
+      margin-top: 20px;
+    }
+
+    .playstore-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(88, 166, 255, 0.4);
+    }
+
+    /* Share Section */
+    .share-section {
+      text-align: center;
+    }
+
+    .share-section h2 {
+      font-size: 1.8rem;
+      color: #58a6ff;
+      margin-bottom: 24px;
+    }
+
+    .share-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .share-buttons a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #58a6ff, #4caf50);
+      color: #0d1117;
+      font-weight: 700;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(88, 166, 255, 0.2);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .share-buttons a:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(88, 166, 255, 0.3);
+    }
+
+    /* Technology tags */
+    .tech-tags {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .tech-tag {
+      background: rgba(88, 166, 255, 0.1);
+      border: 1px solid #58a6ff;
+      color: #58a6ff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .tech-tag:hover {
+      background: rgba(88, 166, 255, 0.2);
+      border-color: #4caf50;
+      color: #4caf50;
+    }
+
+    /* Responsive */
+    @media(max-width: 900px) {
+      .details-flex {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-box {
+        position: relative;
+        top: auto;
+      }
+
+      .animated-title {
+        font-size: 2.2rem;
+      }
+
+      .animated-title-container {
+        padding: 20px 24px;
+      }
+    }
+
+    @media(max-width: 768px) {
+      .banner-slider {
+        max-width: 100%;
+        margin: 20px 0;
+        border-radius: 12px;
+      }
+
+      #prevBtn,
+      #nextBtn {
+        padding: 12px 16px;
+        font-size: 20px;
+      }
+
+      .interactive-section {
+        padding: 24px;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .share-buttons {
+        gap: 12px;
+      }
+
+      .share-buttons a {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .animated-title {
+        font-size: 1.8rem;
+      }
+
+      .header-section {
+        padding: 20px 10px;
+      }
+
+      .details-section {
+        padding: 20px 10px;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+  <a href="index.html" class="back-link">← Back to Portfolio</a>
+
+  <!-- Banner slider -->
+  <div class="banner-slider">
+    <div class="slider"></div>
+    <button id="prevBtn">⟨</button>
+    <button id="nextBtn">⟩</button>
+  </div>
+  <div class="header-section">
+    <div class="animated-title-container">
+      <h1 class="animated-title">Differences Finder</h1>
+    </div>
+  </div>
+  <section class="details-section">
+    <div class="container">
+
+
+      <!-- Stats + Video Flex Wrapper -->
+      <div class="details-flex">
+
+
+        <!-- Stats Block -->
+        <div class="stats-box">
+          <div class="stat-item">
+            <span class="stat-icon">⬇️</span>
+            <span id="total-downloads">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-icon">⭐</span>
+            <span id="average-rating">0.0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-icon">💬</span>
+            <span id="total-reviews">0</span>
+          </div>
+          <div style="text-align:center;">
+            <a href="#" id="playstore-link" class="playstore-btn" target="_blank">Play Store</a>
+          </div>
+        </div>
+
+
+        <!-- Video -->
+        <div class="video-box">
+          <iframe id="game-video" src="https://www.youtube.com/embed/gf3Bm22xPBM?rel=0&modestbranding=1&controls=1"
+            height="500" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+
+      </div>
+      <section class="description-section interactive-section">
+        <h2>About Differences Finder</h2>
+        <p>A fun and challenging find-the-difference game with multiple levels and beautiful graphics. Test your
+          observation skills and compete with friends!</p>
+      </section>
+
+      <section class="features-section interactive-section">
+        <h3 class="accordion-header">Key Features <span class="toggle-icon">▸</span></h3>
+        <ul class="accordion-content">
+          <li>500+ challenging levels</li>
+          <li>Hints to help you solve puzzles</li>
+          <li>Offline gameplay</li>
+          <li>Regular updates and new content</li>
+        </ul>
+      </section>
+
+
+      <!-- Screenshot Lightbox Gallery -->
+      <section class="gallery-section interactive-section">
+        <h2>Game Screenshots</h2>
+        <div class="gallery">
+          <a href="/asset/project_media/DifferenceFinder/6.png" class="gallery-item" data-lg-size="1600-900">
+            <img src="/asset/project_media/DifferenceFinder/6.png" alt="Screenshot 1" />
+          </a>
+          <a href="/asset/project_media/DifferenceFinder/2.png" class="gallery-item" data-lg-size="1600-900">
+            <img src="/asset/project_media/DifferenceFinder/2.png" alt="Screenshot 2" />
+          </a>
+          <a href="/asset/project_media/DifferenceFinder/3.png" class="gallery-item" data-lg-size="1600-900">
+            <img src="/asset/project_media/DifferenceFinder/3.png" alt="Screenshot 3" />
+          </a>
+        </div>
+      </section>
+
+      <!-- Social Share Buttons -->
+      <section class="share-section interactive-section">
+        <h2>Share This Game</h2>
+        <div class="share-buttons">
+          <a href="#" id="share-twitter" title="Share on Twitter">🐦 Twitter</a>
+          <a href="#" id="share-facebook" title="Share on Facebook">📘 Facebook</a>
+          <a href="#" id="share-whatsapp" title="Share on WhatsApp">📱 WhatsApp</a>
+        </div>
+      </section>
+    </div>
+  </section>
+  <!-- Application details -->
+
+
+
+  <!-- Play Store Button -->
+
+
+  <!-- ✅ Slick CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+
+
+  <!-- ✅ jQuery Latest Version -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+  <!-- ✅ Slick JS -->
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
+  <script>
+
+
+    // Complete project data for all projects
+    const allProjects = {
+      'diff-finder': {
+        id: 'diff-finder',
+        name: 'Differences Finder',
+        shortName: 'Differences Finder',
+        category: 'Puzzle Game',
+        description: 'A fun and challenging find-the-difference game with multiple levels and beautiful graphics. Test your observation skills and compete with friends!',
+        longDescription: 'Dive into the world of visual puzzles with Differences Finder - an engaging and addictive game that challenges your observation skills. With hundreds of carefully crafted levels ranging from easy to expert, there\'s always a new puzzle to solve. Enjoy smooth animations, intuitive controls, and a rewarding progression system.',
+        features: [
+          '500+ challenging levels with varying difficulty',
+          'Offline gameplay - no internet required',
+          'Hints and power-ups to help you progress',
+          'Beautiful graphics and smooth animations',
+          'Regular updates with new content',
+          'Leaderboard to compete with friends',
+          'Sound effects and background music options'
+        ],
+        media: [
+          { type: 'image', src: '/asset/project_media/DifferenceFinder/6.png' },
+          { type: 'image', src: '/asset/project_media/DifferenceFinder/2.png' },
+          { type: 'image', src: '/asset/project_media/DifferenceFinder/3.png' },
+          { type: 'image', src: '/asset/project_media/DifferenceFinder/4.png' },
+          { type: 'image', src: '/asset/project_media/DifferenceFinder/5.png' },
+        ],
+        stats: {
+          downloads: '500K+',
+          reviews: '15K+',
+          rating: 4.6,
+          platforms: 'Android, iOS'
+        },
+        playstore: 'https://play.google.com/store/apps/details?id=com.Nirisa.DifferencesFinder&hl=en',
+        appstore: '#',
+        videoUrl: 'https://www.youtube.com/embed/gf3Bm22xPBM?rel=0&modestbranding=1&controls=1',
+        technologies: ['Unity', 'C#', 'Mobile Optimization'],
+        releaseDate: '2022'
+      },
+      'fruitiya': {
+        id: 'fruitiya',
+        name: 'Fruitiya',
+        shortName: 'Fruitiya',
+        category: 'Action Game',
+        description: 'A fast-paced fruit cutting arcade game with multiple game modes, power-ups, and challenging boss levels. Slice your way to glory!',
+        longDescription: 'Fruitiya is an action-packed game that brings the classic fruit-slicing gameplay to the next level. With smooth controls, stunning visuals, and multiple challenging levels, it\'s the perfect game for quick entertainment sessions. Master different fruit types and unlock special abilities as you progress through increasingly difficult levels.',
+        features: [
+          'Multiple game modes (Classic, Zen, Time Attack)',
+          'Power-ups and special abilities',
+          'Progressive difficulty with boss fights',
+          'Combo system for higher scores',
+          'Global leaderboards',
+          'Optimized for smooth performance',
+          'Colorful graphics and satisfying sound effects'
+        ],
+        media: [
+          { type: 'image', src: 'project2.jpg' },
+          { type: 'image', src: 'project2.jpg' },
+          { type: 'image', src: 'project2.jpg' },
+        ],
+        stats: {
+          downloads: '250K+',
+          reviews: '8K+',
+          rating: 4.4,
+          platforms: 'Android, iOS'
+        },
+        playstore: '#',
+        appstore: '#',
+        videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1&controls=1',
+        technologies: ['Unity', 'C#', 'Physics Engine'],
+        releaseDate: '2023'
+      },
+      'card-match': {
+        id: 'card-match',
+        name: 'Card Match Puzzle',
+        shortName: 'Card Match',
+        category: 'Memory Game',
+        description: 'A classic memory card matching game with beautiful themes, multiple difficulty levels, and relaxing gameplay perfect for all ages.',
+        longDescription: 'Card Match Puzzle brings the timeless card matching game to your mobile device with modern graphics and engaging gameplay. Flip cards to find matching pairs, unlock new themes, and challenge yourself with increasing difficulty levels. Perfect for brain training and casual entertainment.',
+        features: [
+          'Multiple beautiful themes and backgrounds',
+          '5 difficulty levels from Easy to Expert',
+          'Time-based and relaxed game modes',
+          'Daily challenges and rewards',
+          'Achievements and badges',
+          'Pause/Resume functionality',
+          'Stats tracking and progress saving'
+        ],
+        media: [
+          { type: 'image', src: 'project3.jpg' },
+          { type: 'image', src: 'project3.jpg' },
+          { type: 'image', src: 'project3.jpg' },
+        ],
+        stats: {
+          downloads: '180K+',
+          reviews: '6K+',
+          rating: 4.5,
+          platforms: 'Android, iOS'
+        },
+        playstore: '#',
+        appstore: '#',
+        videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1&controls=1',
+        technologies: ['Unity', 'C#', 'Data Persistence'],
+        releaseDate: '2023'
+      }
+    };
+
+    // Get project from URL parameter
+    function getProjectFromUrl() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('project') || 'diff-finder';
+    }
+
+    // Load and render project data
+    function loadProject() {
+      const projectId = getProjectFromUrl();
+      const project = allProjects[projectId];
+
+      if (!project) {
+        document.body.innerHTML = '<h1 style="text-align:center; color:#58a6ff; margin-top:100px;">Project not found</h1>';
+        return;
+      }
+
+      // Update page title
+      document.title = `${project.name} - Project Details`;
+
+      // Update header
+      document.querySelector('.animated-title').textContent = project.name;
+      
+      // Update stats
+      $('#total-downloads').text(project.stats.downloads);
+      $('#total-reviews').text(project.stats.reviews);
+      $('#average-rating').text(project.stats.rating.toFixed(1));
+      
+      // Update about section
+      $('.description-section p').text(project.longDescription);
+      
+      // Update features
+      const featuresList = $('.features-section ul.accordion-content');
+      featuresList.empty();
+      project.features.forEach(feature => {
+        featuresList.append(`<li>${feature}</li>`);
+      });
+      
+      // Update video
+      $('#game-video').attr('src', project.videoUrl);
+      
+      // Update play store link
+      $('#playstore-link').attr('href', project.playstore);
+      
+      // Add slider media
+      const sliderDiv = $('.slider');
+      sliderDiv.empty();
+      project.media.forEach(item => {
+        if (item.type === 'image') {
+          sliderDiv.append(`<div><img src="${item.src}" alt="${project.name} screenshot" /></div>`);
+        }
+      });
+
+      // Update gallery
+      const galleryDiv = $('.gallery');
+      galleryDiv.empty();
+      project.media.slice(0, 3).forEach((item, index) => {
+        galleryDiv.append(`
+          <a href="${item.src}" class="gallery-item" data-lg-size="1600-900">
+            <img src="${item.src}" alt="Screenshot ${index + 1}" />
+          </a>
+        `);
+      });
+
+      // Update technology tags
+      const techDiv = $('.tech-tags');
+      if (techDiv.length) {
+        techDiv.empty();
+        project.technologies.forEach(tech => {
+          techDiv.append(`<span class="tech-tag">${tech}</span>`);
+        });
+      }
+    }
+    $('.accordion-header').on('click', function () {
+      const parentSection = $(this).parent();
+      parentSection.toggleClass('accordion-open');
+    });
+    // Social share buttons
+    const pageUrl = encodeURIComponent(window.location.href);
+    const pageTitle = encodeURIComponent(document.title);
+
+    $('#share-twitter').attr('href', `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`);
+    $('#share-facebook').attr('href', `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`);
+    $('#share-whatsapp').attr('href', `https://api.whatsapp.com/send?text=${pageTitle}%20${pageUrl}`);
+
+    // Initialize page
+    $(document).ready(function () {
+      loadProject();
+
+      const sliderDiv = $('.slider');
+
+      // Init slick
+      sliderDiv.slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        arrows: true,
+        dots: true,
+        fade: true
+      });
+
+      // Custom button controls
+      $("#prevBtn").click(function () {
+        sliderDiv.slick('slickPrev');
+      });
+
+      $("#nextBtn").click(function () {
+        sliderDiv.slick('slickNext');
+      });
+    });
+
+  </script>
+
+
+</body>
+
+
+</html>

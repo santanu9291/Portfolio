@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Santanu Mondal - CV</title>
+  <link rel="stylesheet" href="cool-style.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+      color: #c9d1d9;
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      padding: 40px 20px;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    .cv-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .cv-header {
+      text-align: center;
+      margin-bottom: 50px;
+      padding: 40px 30px;
+      background: linear-gradient(135deg, #161b22 0%, #21262d 100%);
+      border-radius: 16px;
+      border: 1px solid #30363d;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cv-header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(88, 166, 255, 0.1) 0%, transparent 70%);
+      animation: float 20s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-30px, -30px); }
+    }
+
+    .cv-header h1 {
+      color: #58a6ff;
+      font-size: 2.5rem;
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cv-header .subtitle {
+      color: #8b949e;
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cv-header .tagline {
+      color: #4caf50;
+      font-size: 1.05rem;
+      font-weight: 600;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cv-content {
+      display: grid;
+      gap: 28px;
+    }
+
+    .cv-section {
+      background: linear-gradient(135deg, #161b22 0%, #21262d 100%);
+      border: 1px solid #30363d;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cv-section::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 4px;
+      background: linear-gradient(180deg, #58a6ff, #4caf50);
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.4s ease;
+    }
+
+    .cv-section:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(88, 166, 255, 0.15);
+      border-color: #58a6ff;
+    }
+
+    .cv-section:hover::before {
+      transform: scaleY(1);
+    }
+
+    .cv-section h2 {
+      color: #58a6ff;
+      font-size: 1.6rem;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .cv-section h2::before {
+      content: '';
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #58a6ff, #4caf50);
+      border-radius: 8px;
+      opacity: 0.2;
+    }
+
+    .cv-item {
+      margin-bottom: 28px;
+    }
+
+    .cv-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .cv-item-title {
+      color: #58a6ff;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .cv-item-subtitle {
+      color: #8b949e;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .cv-item-subtitle span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cv-item-description {
+      color: #c9d1d9;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .cv-item ul {
+      list-style: none;
+      margin-left: 0;
+    }
+
+    .cv-item li {
+      color: #c9d1d9;
+      font-size: 0.95rem;
+      padding: 8px 0 8px 24px;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .cv-item li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: #4caf50;
+      font-weight: 700;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+
+    .skill-tag {
+      background: rgba(88, 166, 255, 0.1);
+      border: 1px solid #58a6ff;
+      color: #58a6ff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .skill-tag:hover {
+      background: rgba(88, 166, 255, 0.2);
+      border-color: #4caf50;
+      color: #4caf50;
+      transform: translateY(-2px);
+    }
+
+    .download-section {
+      text-align: center;
+      margin-top: 40px;
+      padding: 30px;
+      background: linear-gradient(135deg, #161b22 0%, #21262d 100%);
+      border: 1px solid #30363d;
+      border-radius: 16px;
+    }
+
+    .download-cv-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #58a6ff, #4caf50);
+      color: #0d1117;
+      padding: 14px 40px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(88, 166, 255, 0.3);
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+    }
+
+    .download-cv-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(88, 166, 255, 0.4);
+    }
+
+    @media print {
+      body {
+        background: white;
+        color: #000;
+        padding: 0;
+      }
+
+      .back-link,
+      .download-section {
+        display: none;
+      }
+
+      .cv-container {
+        max-width: 100%;
+      }
+
+      .cv-header {
+        background: white;
+        border: none;
+        box-shadow: none;
+        color: #000;
+      }
+
+      .cv-header h1 {
+        color: #000;
+      }
+
+      .cv-header .subtitle,
+      .cv-header .tagline {
+        color: #333;
+      }
+
+      .cv-section {
+        background: white;
+        border: 1px solid #ddd;
+        color: #000;
+        box-shadow: none;
+        page-break-inside: avoid;
+      }
+
+      .cv-section h2 {
+        color: #0066cc;
+        border-bottom: 2px solid #0066cc;
+      }
+
+      .cv-item-title {
+        color: #0066cc;
+      }
+
+      .cv-item li::before {
+        color: #333;
+      }
+
+      .skill-tag {
+        background: white;
+        border: 1px solid #999;
+        color: #000;
+      }
+
+      a {
+        color: #0066cc;
+        text-decoration: underline;
+      }
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #58a6ff;
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      gap: 12px;
+      color: #4caf50;
+    }
+
+    @media (max-width: 768px) {
+      .cv-header {
+        padding: 30px 20px;
+      }
+
+      .cv-header h1 {
+        font-size: 2rem;
+      }
+
+      .cv-section {
+        padding: 24px;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      }
+
+      .cv-item-subtitle {
+        flex-direction: column;
+        gap: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cv-container">
+    <a href="index.html" class="back-link">← Back to Portfolio</a>
+
+    <div class="cv-header">
+      <h1>Santanu Mondal</h1>
+      <div class="subtitle">Game Developer & Drupal Developer</div>
+      <div class="tagline">Computer Science Engineer | 4+ Years Experience</div>
+    </div>
+
+    <div class="cv-content">
+      <div class="cv-section">
+        <h2>Profile</h2>
+        <div class="cv-item-description">
+          Passionate Computer Science Engineer with 4+ years of hands-on experience in game development and Drupal CMS. Specialized in designing and deploying high-performance 2D mobile games and robust backend solutions. Dedicated to writing clean code, delivering innovative designs, and optimizing user experiences. Known for strong problem-solving skills, collaborative teamwork, and commitment to continuous learning.
+        </div>
+      </div>
+
+      <div class="cv-section">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-tag">Unity 2D</div>
+          <div class="skill-tag">C#</div>
+          <div class="skill-tag">Drupal</div>
+          <div class="skill-tag">PHP</div>
+          <div class="skill-tag">JavaScript</div>
+          <div class="skill-tag">SQL</div>
+          <div class="skill-tag">Git & Github</div>
+          <div class="skill-tag">UI/UX Design</div>
+          <div class="skill-tag">Game Physics</div>
+          <div class="skill-tag">REST APIs</div>
+          <div class="skill-tag">Database Design</div>
+          <div class="skill-tag">Performance Optimization</div>
+        </div>
+      </div>
+
+      <div class="cv-section">
+        <h2>Professional Experience</h2>
+
+        <div class="cv-item">
+          <div class="cv-item-title">Senior Game Developer</div>
+          <div class="cv-item-subtitle">
+            <span>📱 Game Development</span>
+            <span>🕐 4+ Years</span>
+          </div>
+          <div class="cv-item-description">
+            Led the design, development, and deployment of high-quality 2D mobile games with focus on user engagement and monetization.
+          </div>
+          <ul>
+            <li>Architected and shipped 2 major titles: Differences Finder and Fruitiya with 100K+ downloads</li>
+            <li>Implemented advanced monetization strategies including targeted ads and in-app purchases</li>
+            <li>Optimized game performance achieving 60 FPS on low-end devices</li>
+            <li>Created intuitive UI systems with smooth animations and responsive controls</li>
+            <li>Collaborated with designers and artists to bring game vision to life</li>
+          </ul>
+        </div>
+
+        <div class="cv-item">
+          <div class="cv-item-title">Drupal Developer</div>
+          <div class="cv-item-subtitle">
+            <span>🔧 Backend Development</span>
+            <span>🕐 Current</span>
+          </div>
+          <div class="cv-item-description">
+            Developing robust and scalable backend solutions using Drupal CMS with focus on code quality and security.
+          </div>
+          <ul>
+            <li>Designed and developed custom Drupal modules for enterprise clients</li>
+            <li>Contributed PHPStan static analysis rules to Drupal community</li>
+            <li>Implemented enhanced CAPTCHA security modules for webform protection</li>
+            <li>Performed security audits and hardened Drupal installations</li>
+            <li>Mentored junior developers on Drupal best practices</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cv-section">
+        <h2>Education</h2>
+        <div class="cv-item">
+          <div class="cv-item-title">Bachelor of Technology in Computer Science Engineering</div>
+          <div class="cv-item-subtitle">
+            <span>🎓 XYZ University</span>
+            <span>📅 2014 - 2018</span>
+          </div>
+          <div class="cv-item-description">
+            Graduated with distinction. Specialized in software engineering, algorithms, data structures, and modern application development.
+          </div>
+        </div>
+
+        <div class="cv-item">
+          <div class="cv-item-title">Game Development Certification</div>
+          <div class="cv-item-subtitle">
+            <span>🎮 Unity Academy</span>
+            <span>📅 2019</span>
+          </div>
+          <div class="cv-item-description">
+            Advanced certification in game development with focus on 2D game design, performance optimization, and monetization.
+          </div>
+        </div>
+
+        <div class="cv-item">
+          <div class="cv-item-title">Drupal Development Expert</div>
+          <div class="cv-item-subtitle">
+            <span>💻 Drupal.org Community</span>
+            <span>📅 2020 - Present</span>
+          </div>
+          <div class="cv-item-description">
+            Certified Drupal developer with expertise in module development, security, and code quality standards.
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-section">
+        <h2>Achievements</h2>
+        <ul>
+          <li>Successfully launched 2 mobile games with combined 100,000+ downloads</li>
+          <li>Contributed open-source Drupal modules adopted by 5,000+ developers</li>
+          <li>Achieved 4.8/5 average rating across all published games</li>
+          <li>Improved game performance by 35% through advanced optimization techniques</li>
+          <li>Mentored 10+ junior developers in game and web development</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="download-section">
+      <a href="Santanu_Mondal_CV.pdf" download="Santanu_Mondal_CV.pdf" class="download-cv-btn">
+        📥 Download PDF CV
+      </a>
+      <p style="margin-top: 16px; color: #8b949e; font-size: 0.9rem;">
+        Click to download your professional CV in PDF format
+      </p>
+    </div>
+  </div>
+</body>
+</html>

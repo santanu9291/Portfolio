@@ -1,90 +1,268 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Santanu Mondal — Unity Game Developer</title>
-<meta name="description" content="Unity 2D Developer | Indie games on Play Store | Drupal developer" />
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cool Dark Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<div class="page-wrap">
-<header class="hero" id="home">
-<div class="hero-inner">
-<div class="avatar">SM</div>
-<div class="hero-text">
-<h1 class="title"><span class="typewriter" data-text="Santanu Mondal — Unity Game Developer"></span></h1>
-<p class="subtitle">Unity 2D • Monetization • Drupal • Remote-ready</p>
-<div class="hero-ctas">
-<a href="#projects" class="btn primary">View Projects</a>
-<a href="#contact" class="btn ghost">Contact</a>
-</div>
-</div>
-</div>
-<div class="parallax-layer" aria-hidden="true"></div>
-</header>
+  <nav>
+    <div class="nav-container">
+      <div class="logo">Santanu</div>
+      <ul class="nav-links">
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <!-- <button id="cvBtn" class="btn-download">Download CV</button> -->
+       <a href="cv.html" target="_blank" class="btn-download">View / Download CV</a>
+    </div>
+  </nav>
+
+  <header id="profile" class="section profile-section">
+    <div class="container">
+      <div class="profile-pic-container">
+        <img src="/asset/images/profilepic.jpg" alt="Your Profile Picture" class="profile-pic" />
+      </div>
+      <h1>Hey, I'm Santanu Mondal</h1>
+      <p class="subtitle">Game Developer & Drupal Developer</p>
+      <p class="description">
+        Computer Science Engineer with 4+ years crafting immersive 2D mobile games and robust Drupal projects.<br>
+        Passionate about clean code, innovative design, and smooth user experiences.
+      </p>
+    </div>
+  </header>
+
+  <!-- <section id="projects" class="section projects-section">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <a href="project-details.html?project=diff-finder" class="project-link">
+        <div class="project-card">
+          <img src="/asset/images/fruitiya.jpg" alt="Differences Finder" class="project-img" />
+          <h3>Differences Finder (Unity)</h3>
+          <p>Engaging spot-the-difference game with animated UI and ad monetization.</p>
+        </div>
+      </a>
+        <div class="project-card">
+          <img src="project2.jpg" alt="Fruitiya" class="project-img" />
+          <h3>Fruitiya (Unity)</h3>
+          <p>Fruit cutting arcade game optimized for performance and revenue.</p>
+        </div>
+        <div class="project-card">
+          <img src="project3.jpg" alt="CAPTCHA Module" class="project-img" />
+          <h3>CAPTCHA Module (Drupal)</h3>
+          <p>Enhanced webform security by integrating custom CAPTCHA challenges.</p>
+        </div>
+        <div class="project-card">
+          <img src="project4.jpg" alt="PHPStan Rules" class="project-img" />
+          <h3>PHPStan Rules (Drupal)</h3>
+          <p>Contributed static analysis rules improving Drupal module quality.</p>
+        </div>
+      </div>
+    </div>
+  </section> -->
+<section id="projects" class="section projects-section">
+  <div class="container">
+    <h2>Featured Projects</h2>
+
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-card-inner">
+          <div class="project-image-wrapper">
+            <img src="/asset/images/fruitiya.jpg" alt="Differences Finder" class="project-img" />
+            <div class="project-overlay"></div>
+          </div>
+          <div class="project-content">
+            <div class="project-tag">Game Development</div>
+            <h3>Differences Finder</h3>
+            <p class="project-tech">Unity • C#</p>
+            <p class="project-description">Engaging spot-the-difference game with animated UI and ad monetization.</p>
+            <a href="project-details.html?project=diff-finder" class="project-btn">View Details →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-inner">
+          <div class="project-image-wrapper">
+            <img src="project2.jpg" alt="Fruitiya" class="project-img" />
+            <div class="project-overlay"></div>
+          </div>
+          <div class="project-content">
+            <div class="project-tag">Game Development</div>
+            <h3>Fruitiya</h3>
+            <p class="project-tech">Unity • C#</p>
+            <p class="project-description">Fruit cutting arcade game optimized for performance and revenue.</p>
+            <a href="project-details.html?project=fruitiya" class="project-btn">View Details →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-inner">
+          <div class="project-image-wrapper">
+            <img src="project3.jpg" alt="Card Match" class="project-img" />
+            <div class="project-overlay"></div>
+          </div>
+          <div class="project-content">
+            <div class="project-tag">Game Development</div>
+            <h3>Card Match Puzzle</h3>
+            <p class="project-tech">Unity • C#</p>
+            <p class="project-description">Memory card matching game with beautiful themes and multiple difficulty levels.</p>
+            <a href="project-details.html?project=card-match" class="project-btn">View Details →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-inner">
+          <div class="project-image-wrapper">
+            <img src="project4.jpg" alt="CAPTCHA Module" class="project-img" />
+            <div class="project-overlay"></div>
+          </div>
+          <div class="project-content">
+            <div class="project-tag">Drupal</div>
+            <h3>CAPTCHA Module</h3>
+            <p class="project-tech">Drupal • PHP</p>
+            <p class="project-description">Enhanced webform security by integrating custom CAPTCHA challenges.</p>
+            <a href="#" class="project-btn">View Details →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-inner">
+          <div class="project-image-wrapper">
+            <img src="project4.jpg" alt="PHPStan Rules" class="project-img" />
+            <div class="project-overlay"></div>
+          </div>
+          <div class="project-content">
+            <div class="project-tag">Code Quality</div>
+            <h3>PHPStan Rules</h3>
+            <p class="project-tech">Drupal • PHPStan</p>
+            <p class="project-description">Contributed static analysis rules improving Drupal module quality.</p>
+            <a href="#" class="project-btn">View Details →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section id="education" class="section education-section">
+    <div class="container">
+      <h2>Education & Credentials</h2>
+      <div class="education-grid">
+        <div class="education-card">
+          <div class="education-icon">🎓</div>
+          <div class="education-card-content">
+            <h3>B.Tech in Computer Science</h3>
+            <p class="education-university">XYZ University</p>
+            <p class="education-year">2014 – 2018</p>
+            <p class="education-desc">
+              Graduated with distinction. Specialized in software engineering, algorithms, and modern web/game development.
+            </p>
+            <div class="education-tags">
+              <span class="edu-tag">Software Engineering</span>
+              <span class="edu-tag">Algorithms</span>
+              <span class="edu-tag">Web Dev</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="education-card">
+          <div class="education-icon">📜</div>
+          <div class="education-card-content">
+            <h3>Game Development Certification</h3>
+            <p class="education-university">Unity Academy</p>
+            <p class="education-year">2019</p>
+            <p class="education-desc">
+              Advanced certification in game development with focus on mobile games, performance optimization, and monetization strategies.
+            </p>
+            <div class="education-tags">
+              <span class="edu-tag">Mobile Games</span>
+              <span class="edu-tag">Optimization</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="education-card">
+          <div class="education-icon">💻</div>
+          <div class="education-card-content">
+            <h3>Drupal Development Expert</h3>
+            <p class="education-university">Drupal.org Community</p>
+            <p class="education-year">2020 – Present</p>
+            <p class="education-desc">
+              Certified Drupal developer with expertise in module development, security best practices, and code quality standards.
+            </p>
+            <div class="education-tags">
+              <span class="edu-tag">Drupal</span>
+              <span class="edu-tag">Security</span>
+              <span class="edu-tag">PHP</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section contact-section">
+    <div class="container contact-flex">
+      <div class="contact-info">
+        <h3>Contact Information</h3>
+        <ul>
+          <li>
+            <span class="contact-icon">📧</span>
+            rajam9291@gmail.com
+          </li>
+          <li>
+            <span class="contact-icon">🌐</span>
+            www.santanumondal.dev
+          </li>
+          <li>
+            <span class="contact-icon">📱</span>
+            +91-XXXXXXXXXX
+          </li>
+          <li>
+            <span class="contact-icon">🏠</span>
+            India
+          </li>
+        </ul>
+      </div>
+      <div class="contact-form-card">
+        <h3>Send Me a Message</h3>
+        <form id="contactForm" class="contact-form" action="https://formsubmit.co/rajam9291@gmail.com" method="POST">
+          <!-- Hidden fields for FormSubmit configuration -->
+          <input type="hidden" name="_subject" value="New Portfolio Contact Message!">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="text" name="_honey" style="display:none">
+          
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+          <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+          <button type="submit" class="btn-send">Send</button>
+        </form>
+        <div id="msg" class="form-msg"></div>
+      </div>
+    </div>
+  </section>
 
 
-<main class="container">
+  <!-- ✅ Slick CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 
 
-<section id="projects" class="card-section">
-<h2 class="section-title">Projects</h2>
-<p class="muted">Selected Play Store releases & prototypes — click to open detail.</p>
+  <!-- ✅ jQuery Latest Version -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
-<div class="projects-grid">
-<!-- Project Card 1 -->
-<article class="proj-card" data-title="Fruitiya" tabindex="0">
-<div class="proj-thumb">Fruitiya</div>
-<div class="proj-body">
-<h3>Fruitiya — Fruit Slicing</h3>
-<p class="muted">Unity 2D slicing mechanic, object pooling, rewarded ads.</p>
-<div class="proj-tags"><span>Unity</span><span>AdMob</span><span>IAP</span></div>
-<div class="proj-actions">
-<a class="btn small" href="#" target="_blank">Play Store</a>
-<button class="btn small outline open-modal">Preview</button>
-</div>
-</div>
-</article>
-
-
-<!-- Project Card 2 -->
-<article class="proj-card" data-title="Differences Finder" tabindex="0">
-<div class="proj-thumb">Differences</div>
-<div class="proj-body">
-<h3>Differences Finder</h3>
-<p class="muted">Puzzle levels, hint system, modular level loader.</p>
-<div class="proj-tags"><span>Unity</span><span>Firebase</span><span>UI</span></div>
-<div class="proj-actions">
-<a class="btn small" href="#" target="_blank">Play Store</a>
-<button class="btn small outline open-modal">Preview</button>
-</div>
-</div>
-</article>
-
-
-<!-- Project Card 3 -->
-<article class="proj-card" data-title="Card Match 2024" tabindex="0">
-<div class="proj-thumb">CardMatch</div>
-<div class="proj-body">
-<h3>Card Match 2024</h3>
-<p class="muted">Memory match with themed skins and progression.</p>
-<div class="proj-tags"><span>Unity</span><span>Animation</span><span>Monetization</span></div>
-<div class="proj-actions">
-<a class="btn small" href="#" target="_blank">Play Store</a>
-<button class="btn small outline open-modal">Preview</button>
-</div>
-</div>
-</article>
-
-
-<!-- Project Card 4 -->
-<article class="proj-card" data-title="Word Find" tabindex="0">
-<div class="proj-thumb">WordFind</div>
-<div class="proj-body">
-<h3>Word Find — In Development</h3>
-<p class="muted">Word search with daily challenges, hints, and leaderboard (planned).</p>
-<div class="proj-tags"><span>Unity</span><span>Puzzle</span><span>Firebase</span></div>
-<div class="proj-actions">
-<button class="btn small outline open-modal">Preview</button>
+  <!-- ✅ Slick JS -->
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
